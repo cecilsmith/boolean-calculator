@@ -1,38 +1,25 @@
 <template>
   <div class="app">
     <header>
-      <h1>{{ title }}</h1>
-      <p>{{ subtitle }}</p>
+      <div class="header-content">
+        <h1>{{ title }}</h1>
+        <p>{{ subtitle }}</p>
+      </div>
+      <nav class="navigation">
+        <router-link to="/" class="nav-link">Home</router-link>
+        <router-link to="/kmap/solver" class="nav-link">K-Map Solver</router-link>
+        <router-link to="/kmap/builder" class="nav-link">K-Map Builder</router-link>
+        <router-link to="/division" class="nav-link">Boolean Division</router-link>
+        <router-link to="/multiplication" class="nav-link">Boolean Multiplication</router-link>
+      </nav>
     </header>
     
     <main>
-      <section class="hero">
-        <h2>Welcome to Vue 3!</h2>
-        <p>This is a sample website built with Vue 3 and Vite.</p>
-      </section>
-
-      <section class="counter">
-        <h3>Interactive Counter</h3>
-        <div class="counter-display">
-          <button @click="decrement" class="btn">-</button>
-          <span class="count">{{ count }}</span>
-          <button @click="increment" class="btn">+</button>
-        </div>
-        <button @click="reset" class="btn-reset">Reset</button>
-      </section>
-
-      <section class="features">
-        <h3>Features</h3>
-        <ul>
-          <li v-for="feature in features" :key="feature">
-            {{ feature }}
-          </li>
-        </ul>
-      </section>
+      <router-view />
     </main>
 
     <footer>
-      <p>&copy; 2025 Vue Sample Website</p>
+      <p>&copy; 2025 Nathanael Smith</p>
     </footer>
   </div>
 </template>
@@ -40,29 +27,8 @@
 <script setup>
 import { ref } from 'vue'
 
-const title = ref('Vue Sample Website')
-const subtitle = ref('Built with Vue 3 + Vite')
-const count = ref(0)
-
-const features = ref([
-  'Fast Hot Module Replacement (HMR)',
-  'Composition API',
-  'Reactive data binding',
-  'Component-based architecture',
-  'Easy to learn and use'
-])
-
-const increment = () => {
-  count.value++
-}
-
-const decrement = () => {
-  count.value--
-}
-
-const reset = () => {
-  count.value = 0
-}
+const title = ref('Boolean Calculator')
+// const subtitle = ref('Built with Vue 3 + Vite')
 </script>
 
 <style scoped>
@@ -76,7 +42,11 @@ header {
   background: linear-gradient(135deg, #42b883 0%, #35495e 100%);
   color: white;
   padding: 2rem;
+}
+
+.header-content {
   text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 header h1 {
@@ -89,103 +59,34 @@ header p {
   opacity: 0.9;
 }
 
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  transition: background 0.3s;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link.router-link-active {
+  background: rgba(255, 255, 255, 0.2);
+  font-weight: bold;
+}
+
 main {
   flex: 1;
-  padding: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.hero {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.hero h2 {
-  color: #42b883;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.counter {
-  background: #f8f9fa;
-  padding: 2rem;
-  border-radius: 8px;
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.counter h3 {
-  margin-top: 0;
-  color: #35495e;
-}
-
-.counter-display {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  margin: 2rem 0;
-}
-
-.count {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #42b883;
-  min-width: 100px;
-}
-
-.btn {
-  background: #42b883;
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.btn:hover {
-  background: #35495e;
-}
-
-.btn-reset {
-  background: #35495e;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.btn-reset:hover {
-  background: #42b883;
-}
-
-.features {
-  margin-bottom: 3rem;
-}
-
-.features h3 {
-  color: #35495e;
-  margin-bottom: 1rem;
-}
-
-.features ul {
-  list-style: none;
-  padding: 0;
-}
-
-.features li {
-  background: #f8f9fa;
-  padding: 1rem;
-  margin-bottom: 0.5rem;
-  border-radius: 4px;
-  border-left: 4px solid #42b883;
 }
 
 footer {
