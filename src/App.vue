@@ -11,6 +11,7 @@
         <router-link to="/kmap/builder" class="nav-link">K-Map Builder</router-link>
         <router-link to="/division" class="nav-link">Boolean Division</router-link>
         <router-link to="/multiplication" class="nav-link">Boolean Multiplication</router-link>
+        <router-link to="/signed" class="nav-link">Signed Number Calculator</router-link>
       </nav>
     </header>
     
