@@ -105,7 +105,7 @@ function isValidBinary(str) {
 }
 
 function isValidDecimal(str) {
-  return /^-?\d+$/.test(str) // optional leading -
+  return /^-?\d+$/.test(str)
 }
 
 function isValidHex(str) {
@@ -141,8 +141,6 @@ function parseValue(value, baseMode, signMode) {
     else signMode = 'positive'
   }
 
-  console.log(signMode, baseMode)
-
   const signEnable = signMode === 'negative' ? 1 : 0
 
   if (baseMode === 'binary') {
@@ -159,9 +157,8 @@ function parseValue(value, baseMode, signMode) {
 
 function toTwosComplementMinimal(value, minLength) {
   const abs = Math.abs(value)
-  // bits needed for magnitude + 1 sign bit
   const bits = Math.max(minLength, Math.ceil(Math.log2(abs + 1)) + 1)
-  return (value & ((1 << bits) - 1)) // mask to bits
+  return (value & ((1 << bits) - 1))
              .toString(2)
              .padStart(bits, '0')
 }
@@ -169,7 +166,7 @@ function toTwosComplementMinimal(value, minLength) {
 function binaryToHex(binStr) {
   if (!/^[01]+$/.test(binStr)) throw new Error('Invalid binary string')
 
-  const hexLength = Math.ceil(binStr.length / 4) // each hex digit = 4 bits
+  const hexLength = Math.ceil(binStr.length / 4)
   const hex = parseInt(binStr, 2).toString(16).toUpperCase()
   return hex.padStart(hexLength, '0')
 }
@@ -180,7 +177,6 @@ function calculate() {
 
   try {
     const a = parseValue(input.value, inputMode.value, inputSign.value)
-    console.log('a:', a)
 
     const inputLength = input.value.length;
 
